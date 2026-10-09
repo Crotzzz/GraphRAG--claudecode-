@@ -1,0 +1,11 @@
+{
+  "title": "GraphRAG 智能文档问答系统",
+  "description": "基于知识图谱与大语言模型的企业级智能文档分析平台。上传文档后自动解析、构建知识图谱，并提供 AI 智能问答能力。",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

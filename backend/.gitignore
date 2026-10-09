@@ -1,0 +1,15 @@
+# 虚拟环境
+.venv/
+
+# 临时文件
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# 数据文件
+data/*.sqlite
+data/uploads/doc_*/
+data/config.json
+
+# 环境变量
+.env

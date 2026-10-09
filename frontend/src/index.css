@@ -1,0 +1,218 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   GraphRAG 智能文档问答系统 - 全局样式
+   ============================================================ */
+
+/* ---- CSS Custom Properties (设计令牌) ---- */
+:root {
+  /* 品牌色 */
+  --color-brand: #1a1a2e;
+  --color-accent: #7209b7;
+  --color-primary: #4361ee;
+  --color-success: #2a9d8f;
+  --color-warning: #f4a261;
+  --color-error: #e63946;
+
+  /* 中性色 - Light */
+  --bg-page: #f0f2f5;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --border-color: #e8e8e8;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  /* 侧栏 */
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 56px;
+
+  /* 布局 */
+  --header-height: 56px;
+  --statusbar-height: 32px;
+}
+
+:root.dark {
+  --bg-page: #0d1117;
+  --bg-card: #161b22;
+  --bg-input: #0d1117;
+  --text-primary: #e6e6e6;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --border-color: #30363d;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- 全局重置 ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- 滚动条美化 ---- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #484f58;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6e7681;
+}
+
+/* ---- 通用工具类 ---- */
+.card {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: filter 0.15s, opacity 0.15s;
+}
+.btn-primary:hover {
+  filter: brightness(0.9);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.dark .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 4px;
+  line-height: 1.4;
+}
+
+/* ---- 动画 ---- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease forwards;
+}
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ---- 消息气泡 ---- */
+.message-bubble-user {
+  background: linear-gradient(135deg, #4361ee, #3a56d4);
+  color: #fff;
+  border-radius: 12px 12px 4px 12px;
+}
+.message-bubble-assistant {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px 12px 12px 4px;
+}
+
+/* ---- 进度条渐变 ---- */
+.progress-gradient {
+  background: linear-gradient(90deg, #4361ee, #7209b7);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
